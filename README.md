@@ -1,2 +1,2 @@
-# WiDSDublinLab2025
-Granite workshop for WiDS Dublin 2025
+# WiDSIrelandLab2025
+Granite workshop for WiDS Ireland 2025
