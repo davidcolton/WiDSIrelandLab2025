@@ -8,14 +8,15 @@ The [granite-tsfm library](https://github.com/ibm-granite/granite-tsfm) provides
 
 # Install the tsfm library
 ```python
+! pip install "granite-tsfm[notebooks]==v0.2.22"
 
 import sys
 if 'google.colab' in sys.modules:
     ! pip install --force-reinstall --no-warn-conflicts "numpy<2.1.0,>=2.0.2"
 ```
 
-1. This code snippet uses the "granite-tsfm[notebooks]==v0.2.22" library.
-2. The code imports the sys module and 
+1. `! pip install "granite-tsfm[notebooks]==v0.2.22"`: This code snippet installs the tsfm library, specifically the version v0.2.22, using the pip package manager. The [notebooks]  extra is included to ensure that the library is compatible with Jupyter notebooks. 
+2. The remaining code imports the sys module.
 3. Checks if the google.colab module is present in the sys.modules dictionary and if found, it installs the numpy library with a specific version range (<2.1.0, >=2.0.2) using the pip  package manager. The --force-reinstall flag forces a reinstallation of the package, and the --no-warn-conflicts flag suppresses warnings about conflicting dependencies.
 
 ### Import Packages

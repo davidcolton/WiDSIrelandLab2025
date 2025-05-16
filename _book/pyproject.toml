@@ -7,7 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "docling>=2.28.4",
     "kaleido==0.2.1",
-    "granite-tsfm[notebooks]==0.2.23",
+    "granite-tsfm[notebooks]==0.2.22",
     "ibm-granite-community-utils",
     "ipywidgets>=8.1.5",
     "jupyter-black>=0.4.0",
