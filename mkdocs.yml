@@ -14,7 +14,7 @@ site_dir: "site"
 # Navigation
 nav:
   - Welcome:
-      - About the workshop: index.md
+      - About the workshop: README.md
   - Workshop:
       - Lab 0. Pre-work: pre-work/readme.md
       - Lab 1. Summarize a text document with Granite: lab-1/readme.md
