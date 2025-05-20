@@ -5,7 +5,7 @@ description: Learn how to leverage the Granite Foundational Models
 logo: images/ibm-blue-background.png  
 ---
 
-# Introduction
+#Introduction
 
 Welcome to our workshop! In this workshop we'll be using the open-sourced [IBM Granite
 AI foundation models](https://www.ibm.com/granite) for a number of use cases that
@@ -22,11 +22,12 @@ By the end of this workshop, you will be able to:
 
 The introductory page of the workshop is broken down into the following sections:
 
-- [Introduction](#introduction)
-    - [About this workshop](#about-this-workshop)
-  - [Agenda](#agenda)
-  - [Technology Used](#technology-used)
-  - [Credits](#credits)
+
+- [logo: images/ibm-blue-background.png](#logo-imagesibm-blue-backgroundpng)
+  - [About this workshop](#about-this-workshop)
+- [Agenda](#agenda)
+- [Technology Used](#technology-used)
+- [Credits](#credits)
 
 ## Agenda
 
