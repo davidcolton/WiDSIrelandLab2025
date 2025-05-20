@@ -17,15 +17,14 @@ In its simplest form, RAG requires 3 steps:
   - Retrieve relevant passages from the database. In this recipe, we use an embedding of the query to retrieve semantically similar passages.
   - Generate a response by feeding retrieved passage into a large language model, along with the user query.
 
-
-
 ## Prerequisites
 
 This lab is a [Jupyter notebook](https://jupyter.org/). Please follow the instructions in [pre-work](../pre-work/readme.md) to run the lab.
 
 
-
 ## Loading the Lab
+
+Using colab to run the remotely [![Document Summarization with Granite notebook](https://colab.research.google.com/assets/colab-badge.svg "Open In Colab")]({{ extra.colab_url }}/blob/{{ git.commit }}/notebooks/Summarize.ipynb){:target="_blank"}
 
 To run the notebook from your command line in Jupyter using the active virtual environment from the [pre-work](../pre-work/readme.md), run:
 
@@ -36,13 +35,11 @@ jupyter-lab
 When Jupyter Lab opens the path to the `notebooks/RAG_with_Langchain.ipynb` notebook file is relative to the `sample-wids` folder from the git clone in the [pre-work](../pre-work/readme.md). The folder navigation pane on the left-hand side can be used to navigate to the file. Once the notebook has been found it can be double clicked and it will open to the pane on the right. 
 
 
-
 ## Running and Lab (with explanations)
 
 This notebook demonstrates an application of long document summarisation techniques to a work of literature using Granite.
 
 The notebook contains both `code` cells and `markdown` text cells. The text cells each give a brief overview of the code in the following code cell(s). These cells are not executable. You can execute the code cells by placing your cursor in the cell and then either hitting the **Run this cell** button at the top of the page or by pressing the `Shift` + `Enter` keys together. The main `code` cells are described in detail below.
-
 
 
 ## Choosing the Embeddings Model
@@ -60,9 +57,7 @@ embeddings_tokenizer = AutoTokenizer.from_pretrained(embeddings_model_path)
 
 Here we are using the Hugging Face Transformers library to load a pre-trained model for generating embeddings (vector representations of text). Here's a breakdown of what each line does:
 
-1. `from langchain_huggingface import HuggingFaceEmbeddings`: This line imports the `HuggingFaceEmbeddings` class from the 
-
-   `langchain_huggingface` module. This class is used to load pre-trained models for generating embeddings.
+1. `from langchain_huggingface import HuggingFaceEmbeddings`: This line imports the `HuggingFaceEmbeddings` class from the `langchain_huggingface` module. This class is used to load pre-trained models for generating embeddings.
 
 2. `from transformers import AutoTokenizer`: This line imports the `AutoTokenizer` class from the `transformers` library. This class is used to tokenize text into smaller pieces (words, subwords, etc.) that can be processed by the model.
 
@@ -77,8 +72,11 @@ In summary, we are setting up a system for generating embeddings from text using
 To use a model from a provider other than Huggingface, replace this code cell with one from [this Embeddings Model recipe](https://github.com/ibm-granite-community/granite-kitchen/blob/main/recipes/Components/Langchain_Embeddings_Models.ipynb).
 
 
+## Choose your Vector Database
 
-## Vector Database
+Specify the database to use for storing and retrieving embedding vectors.
+
+To connect to a vector database other than Milvus substitute this code cell with one from [this Vector Store recipe](https://github.com/ibm-granite-community/granite-kitchen/blob/main/recipes/Components/Langchain_Vector_Stores.ipynb).
 
 ```python
 from langchain_milvus import Milvus
@@ -104,38 +102,64 @@ This Python script is setting up a vector database using Milvus, a vector databa
 In summary, this script sets up a vector database using Milvus and a pre-trained embedding model from Hugging Face. The database is stored in a temporary file, and it's ready to index and search vector representations of text data.
 
 
-
 ## Selecting your model
 
-Select a Granite model to use. Here we use a Langchain client to connect to  the model. If there is a locally accessible Ollama server, we use an  Ollama client to access the model. Otherwise, we use a Replicate client  to access the model.
+Select a Granite model to use. Here we use a Langchain client to connect to  the model. If there is a locally accessible Ollama server, we use an  Ollama client to access the model. Otherwise, we use a Replicate client to access the model.
 
 When using Replicate, if the `REPLICATE_API_TOKEN` environment variable is not set, or a `REPLICATE_API_TOKEN` Colab secret is not set, then the notebook will ask for your [Replicate API token](https://replicate.com/account/api-tokens) in a dialog box.
 
 ```python
+model_path = "ibm-granite/granite-3.2-8b-instruct"
 try:  # Look for a locally accessible Ollama server for the model
     response = requests.get(os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434"))
     model = OllamaLLM(
         model="granite3.2:2b",
-        num_ctx=65536,  # 64K context window
     )
     model = model.bind(raw=True)  # Client side controls prompt
 except Exception:  # Use Replicate for the model
     model = Replicate(
-        model="ibm-granite/granite-3.2-8b-instruct",
+        model=model_path,
         replicate_api_token=get_env_var("REPLICATE_API_TOKEN"),
-        model_kwargs={
-            "max_tokens": 2000,  # Set the maximum number of tokens to generate as output.
-            "min_tokens": 200,  # Set the minimum number of tokens to generate as output.
-            "temperature": 0.75,
-            "presence_penalty": 0,
-            "frequency_penalty": 0,
-        },
     )
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+```
+1. `model_path = "ibm-granite/granite-3.2-8b-instruct"`: This line assigns the string `"ibm-granite/granite-3.2-8b-instruct"` to the `model_path` variable. This is the name of the pre-trained model on the Hugging Face Model Hub that will be used for the language model.
+2. `try:`: This line starts a try block, which is used to handle exceptions that may occur during the execution of the code within the block.
+3. `response = requests.get(os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434"))`: This line sends a GET request to the Ollama server using the `requests.get()` function. The server address is obtained from the `OLLAMA_HOST` environment variable. If the environment variable is not set, the default address `http://127.0.0.1:11434` is used.
+4. `model = OllamaLLM(model="granite3.2:2b")`: This line creates an instance of the `OllamaLLM` class from the `ollama` library, specifying the model name as `"granite3.2:2b"`.
+5. `model = model.bind(raw=True)`: This line binds the `OllamaLLM` instance to the client-side, allowing client-side controls over the prompt.
+6. `except:`: This line starts an except block, which is used to handle exceptions that occur within the try block.
+7. `model = Replicate(model=model_path, replicate_api_token=get_env_var("REPLICATE_API_TOKEN"))`: This line creates an instance of the `Replicate` class from the `replicate` library, specifying the model path and the Replicate API token obtained from the `REPLICATE_API_TOKEN` environment variable.
+8. `tokenizer = AutoTokenizer.from_pretrained(model_path)`: This line loads a pre-trained tokenizer for the specified model using the `AutoTokenizer.from_pretrained()` method from the `transformers` library.
+
+In summary, the code snippet attempts to connect to a locally accessible Ollama server for the specified model. If the connection is successful, it creates an `OllamaLLM` instance and binds it to the client-side. If the connection fails, it uses the Replicate service to load the model. In both cases, a tokenizer is loaded for the specified model using the `AutoTokenizer.from_pretrained()` method.
+
+## Building the Vector Database
+
+In this example, we take the State of the Union speech text, split it into chunks, derive embedding vectors using the embedding model, and load it into the vector database for querying.
+
+### Download the document
+
+Here we use President Biden's State of the Union address from March 1, 2022.
+
+```python
+import os
+import wget
+
+filename = "state_of_the_union.txt"
+url = "https://raw.githubusercontent.com/IBM/watson-machine-learning-samples/master/cloud/data/foundation_models/state_of_the_union.txt"
+
+if not os.path.isfile(filename):
+    wget.download(url, out=filename)
 ```
 
-In this first piece of code we **try** to determine if there is a local Ollama server running on `http://127.0.0.1:11434`. If the Ollama server is found then an `OllamaLLM` model instance is created for use later. If the Ollama server is not found the code then reverts to using the Granite 3.2-8b model served from Replicate .
+1. `filename = "state_of_the_union.txt"`: This line assigns the string `"state_of_the_union.txt"` to the `filename` variable. This is the name of the file that will be downloaded and saved locally.
+2. `url = "https://raw.githubusercontent.com/IBM/watson-machine-learning-samples/master/cloud/data/foundation_models/state_of_the_union.txt"`: This line assigns the URL of the file to be downloaded to the `url` variable.
+3. `if not os.path.isfile(filename)`: This line checks if the file specified by `filename` does not already exist in the current working directory. The `os.path.isfile()` function returns `True` if the file exists and `False` otherwise.
+4. `wget.download(url, out=filename)`: If the file does not exist, this line uses the `wget.download()` function to download the file from the specified URL and save it with the name `filename`. The `out` parameter is used to specify the output file name.
 
-
+In summary, the code snippet checks if a file with the specified name already exists in the current working directory. If the file does not exist, it downloads the file from the provided URL using the `wget` library and saves it with the specified filename.
 
 # Split the document into chunks
 
@@ -171,8 +195,9 @@ This Python script is using the Langchain library to load a text file and split 
 In summary, this script loads a text file, splits it into smaller chunks based on the maximum sentence length that a Hugging Face tokenizer can handle, assigns a unique identifier to each chunk, and then prints the total number of chunks created.
 
 
-
 ## Populate the vector database
+
+NOTE: Population of the vector database may take over a minute depending on your embedding model and service.
 
 ```python
 ids = vector_db.add_documents(texts)
@@ -181,19 +206,11 @@ print(f"{len(ids)} documents added to the vector database")
 
 Next we load the `texts` object created earlier, split it into sentence-sized chunks, and adds these chunks to our vector database, associating each chunk with a unique ID.
 
-1. `ids = vector_db.add_documents(texts)`: This line adds the text chunks to a vector database (
-
-   `vector_db`). The `add_documents` method returns a list of IDs for the added documents.
-
+1. `ids = vector_db.add_documents(texts)`: This line adds the text chunks to a vector database (`vector_db`). The `add_documents` method returns a list of IDs for the added documents.
 2. `print(f"{len(ids)} documents added to the vector database")`: This line prints the number of documents added to the vector database.
 
-   
-
 ## Querying the Vector Database
-
-
-
-## Conduct a similarity search
+### Conduct a similarity search
 
 Search the database for similar documents by proximity of the embedded vector in vector space.
 
@@ -203,16 +220,21 @@ docs = vector_db.similarity_search(query)
 print(f"{len(docs)} documents returned")
 for doc in docs:
     print(doc)
-    print("=" * 80)
+    print("=" * 80)  # Separator for clarity
 ```
+1. `query = "What did the president say about Ketanji Brown Jackson?"`: This line assigns the string `"What did the president say about Ketanji Brown Jackson?"` to the `query` variable. This is the search query that will be used to find relevant documents in the vector database.
+2. `docs = vector_db.similarity_search(query)`: This line calls the `similarity_search()` method of the `vector_db` object, passing the `query` as an argument. The method returns a list of documents that are most similar to the query based on the vector representations of the documents in the vector database.
+3. `print(f"{len(docs)} documents returned")`: This line prints the number of documents returned by the `similarity_search()` method. The `len()` function is used to determine the length of the `docs` list.
+4. `for doc in docs:`: This line starts a loop that iterates over each document in the `docs` list.
+5. `print(doc)`: This line prints the content of the current document in the loop.
+6. `print("=" * 80)`: This line prints a separator line consisting of 80 equal signs (`=`) to improve the readability of the output by visually separating the content of each document.
 
-
-
-
-
+In summary, the code snippet defines a search query, uses the `similarity_search()` method of a vector database to find relevant documents, and prints the number of documents returned along with their content. The separator line improves the readability of the output by visually separating the content of each document.
 
 
 ## Answering Questions
+
+### Automate the RAG pipeline
 
 Build a RAG chain with the model and the document retriever.
 
@@ -221,8 +243,6 @@ First we create the prompts for Granite to perform the RAG query. We use the Gra
 `{context}` will hold the retrieved chunks, as shown in the previous search, and feeds this to the model as document context for answering our question.
 
 Next, we construct the RAG pipeline by using the Granite prompt templates previously created.
-
-
 
 ```python
 from langchain.prompts import PromptTemplate
@@ -262,7 +282,19 @@ rag_chain = create_retrieval_chain(
     combine_docs_chain=combine_docs_chain,
 )
 ```
+1. `from langchain.prompts import PromptTemplate`: This line imports the `PromptTemplate` class from the `langchain.prompts` module. This class is used to create custom prompt templates for language models.
+2. `from langchain.chains.retrieval import create_retrieval_chain`: This line imports the `create_retrieval_chain()` function from the `langchain.chains.retrieval` module. This function is used to create a retrieval-augmented generation (RAG) chain, which combines a retrieval component (e.g., a vector database) with a language model for generating context-aware responses.
+3. `from langchain.chains.combine_documents import create_stuff_documents_chain`: This line imports the `create_stuff_documents_chain()` function from the `langchain.chains.combine_documents` module. This function is used to create a chain that combines multiple retrieved documents into a single input for the language model.
+4. `prompt = tokenizer.apply_chat_template(...)`: This line creates a custom prompt template for a question-answering task using the `apply_chat_template()` method of the `tokenizer` object. The prompt template includes a user role with the input question and a document role with the retrieved context. The `add_generation_prompt` parameter is set to `True` to include a generation prompt for the language model.
+5. `prompt_template = PromptTemplate.from_template(template=prompt)`: This line creates a `PromptTemplate` object from the custom prompt template.
+6. `document_prompt_template = PromptTemplate.from_template(template="""\
+Document {doc_id}
+{page_content}""")`: This line creates a custom prompt template for wrapping each retrieved document. The template includes a document identifier (`{doc_id}`) and the document content (`{page_content}`).
+7. `document_separator="\n\n"`: This line assigns the string `"\n\n"` to the `document_separator` variable. This separator will be used to separate the content of each retrieved document in the combined input for the language model.
+8. `combine_docs_chain = create_stuff_documents_chain(...)`: This line creates a chain that combines multiple retrieved documents into a single input for the language model using the `create_stuff_documents_chain()` function. The function takes the language model (`model`), the prompt template (`prompt_template`), the document prompt template (`document_prompt_template`), and the document separator (`document_separator`) as arguments.
+9. `rag_chain = create_retrieval_chain(...)`: This line creates a retrieval-augmented generation (RAG) chain using the `create_retrieval_chain()` function. The function takes the retrieval component (i.e., the vector database wrapped with `as_retriever()`) and the combine documents chain (`combine_docs_chain`) as arguments.
 
+In summary, the code snippet imports necessary classes and functions from the `langchain` library to create a retrieval-augmented generation (RAG) chain. It defines a custom prompt template for a question-answering task, creates a document prompt template for wrapping retrieved documents, and assembles the RAG chain by combining the retrieval component and the combine documents chain.
 
 
 ## Generate a retrieval-augmented response to a question
@@ -274,7 +306,10 @@ output = rag_chain.invoke({"input": query})
 
 print(output['answer'])
 ```
+1. `output = rag_chain.invoke({"input": query})`: This line invokes the RAG chain with the input query. The `invoke()` method takes a dictionary as an argument, where the key is `"input"` and the value is the `query` string. The method returns a dictionary containing the output of the RAG chain, which includes the generated answer.
+2. `print(output['answer'])`: This line prints the generated answer from the RAG chain output. The `output` dictionary is accessed using the key `'answer'`, which corresponds to the generated answer in the RAG chain's response.
 
+In summary, the code snippet invokes the RAG chain with the input query and prints the generated answer from the RAG chain's output.
 
 
 ## Credits
