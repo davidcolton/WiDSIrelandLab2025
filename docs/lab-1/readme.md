@@ -2,8 +2,7 @@
 
 [Text summarization](https://www.ibm.com/topics/text-summarization) condenses one or more texts into shorter summaries for enhanced information extraction.
 
-The goal of this lab is to show how you can use [IBM Granite](https://www.ibm.com/granite/docs/models/granite/) models in order to apply long document summarization techniques to a work of literature.
-
+The goal of this lab is to show how the [IBM Granite](https://www.ibm.com/granite/docs/models/granite/) models can be used in order to apply long document summarization techniques to a work of literature.
 
 
 ## Prerequisites
@@ -11,30 +10,27 @@ The goal of this lab is to show how you can use [IBM Granite](https://www.ibm.co
 This lab is a [Jupyter notebook](https://jupyter.org/). Please follow the instructions in [pre-work](../pre-work/readme.md) to run the lab.
 
 
-
 ## Loading the Lab
 
-To run the notebook from your command line in Jupyter using the active virtual environment from the [pre-work](../pre-work/readme.md), run:
+To run the notebook from command line in Jupyter using the active virtual environment from the [pre-work](../pre-work/readme.md), run:
 
 ```shell
 jupyter-lab
 ```
 
-When Jupyter Lab opens the path to the `notebooks/Summarize.ipynb` notebook file is relative to the `sample-wids` folder from the git clone in the [pre-work](../pre-work/readme.md). The folder navigation pane on the left-hand side can be used to navigate to the file. Once the notebook has been found it can be double clicked and it will open to the pane on the right. 
-
+When Jupyter Lab opens the path to the `notebooks/Summarize.ipynb` notebook file is relative to the `WiDSIreland` folder from the git clone in the [pre-work](../pre-work/readme.md). The folder navigation pane on the left-hand side can be used to navigate to the file. Once the notebook has been found it can be double clicked and it will open to the pane on the right. 
 
 
 ## Running and Lab (with explanations)
 
 This notebook demonstrates an application of long document summarisation techniques to a work of literature using Granite.
 
-The notebook contains both `code` cells and `markdown` text cells. The text cells each give a brief overview of the code in the following code cell(s). These cells are not executable. You can execute the code cells by placing your cursor in the cell and then either hitting the **Run this cell** button at the top of the page or by pressing the `Shift` + `Enter` keys together. The main `code` cells are described in detail below.
-
+The notebook contains both `code` cells and `markdown` text cells. The text cells gives a brief overview of the code and these cells are not executable. The code cells can be executed by placing the cursor in the cell and either hitting the **Run this cell** button at the top of the page or by pressing the `Shift` + `Enter` keys together. The main `code` cells are described in detail below.
 
 
 ## Selecting your model
 
-Select a Granite model to use. Here we use a Langchain client to connect to  the model. If there is a locally accessible Ollama server, we use an  Ollama client to access the model. Otherwise, we use a Replicate client  to access the model.
+Select a Granite model to use. Here we use a Langchain client to connect to the model. If there is a locally accessible Ollama server, we use an Ollama client to access the model. Otherwise, we use a Replicate client to access the model.
 
 When using Replicate, if the `REPLICATE_API_TOKEN` environment variable is not set, or a `REPLICATE_API_TOKEN` Colab secret is not set, then the notebook will ask for your [Replicate API token](https://replicate.com/account/api-tokens) in a dialog box.
 
@@ -60,8 +56,7 @@ except Exception:  # Use Replicate for the model
     )
 ```
 
-In this first piece of code we **try** to determine if there is a local Ollama server running on `http://127.0.0.1:11434`. If the Ollama server is found then an `OllamaLLM` model instance is created for use later. If the Ollama server is not found the code then reverts to using the Granite 3.2-8b model served from Replicate .
-
+In this first piece of code we **try** to determine if there is a local Ollama server running on `http://127.0.0.1:11434`. If the Ollama server is found then an `OllamaLLM` model instance is created for use later. If the Ollama server is not found the code then reverts to using the Granite 3.2-8b model served from Replicate.
 
 
 ### Chunk Document

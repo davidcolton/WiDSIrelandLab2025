@@ -1,6 +1,6 @@
 # Pre-work
 
-The labs in the workshop are [Jupyter notebooks](https://jupyter.org/). These notebooks are intended to be run locally on your computer. Follow these instructions to ensure that your laptop is ready to run the labs.
+The labs in this workshop are [Jupyter notebooks](https://jupyter.org/). These notebooks are intended to be executed locally on your computer. Follow these instructions to ensure that your laptop is ready to run the labs.
 
 ## Running the Granite Notebooks Locally
 
@@ -11,9 +11,16 @@ It is recommended if you want to run the lab notebooks locally on your computer 
 
 Running the lab notebooks locally on your computer requires the following steps:
 
-- [Local Prerequisites](#local-prerequisites)
-- [Clone the Granite Workshop Repository](#clone-the-granite-workshop-repository)
-- [Serving the Granite AI Models](#serving-the-granite-ai-models)
+- [Pre-work](#pre-work)
+  - [Running the Granite Notebooks Locally](#running-the-granite-notebooks-locally)
+  - [Local Prerequisites](#local-prerequisites)
+    - [Git](#git)
+    - [Uv](#uv)
+  - [Clone the Granite Workshop Repository](#clone-the-granite-workshop-repository)
+    - [Sync the Python Virtual Environment](#sync-the-python-virtual-environment)
+    - [Serving the Granite AI Models](#serving-the-granite-ai-models)
+      - [Replicate AI Cloud Platform](#replicate-ai-cloud-platform)
+      - [Running Ollama Locally](#running-ollama-locally)
 
 ## Local Prerequisites
 
@@ -51,7 +58,6 @@ uv 0.6.12 (e4e03833f 2025-04-02)
 ```
 
 
-
 ## Clone the Granite Workshop Repository
 
 Clone the workshop repo and cd into the repo directory.
@@ -65,7 +71,7 @@ cd sample-wids
 
 ### Sync the Python Virtual Environment
 
-The Sample WiDS repository uses a `pyproject.toml` file to define the version of Python to use and the required libraries to load. To sync your repository and setup Python and download your library dependancies run `uv sync` in a terminal. After syncing you have to activate your virtual environment.
+The Sample WiDS repository uses a `pyproject.toml` file to define the version of Python to use and the required libraries to load. To sync your repository and setup Python and download the library dependancies run `uv sync` in a terminal. After syncing you have to activate your virtual environment.
 
 **Note:**
 
@@ -75,7 +81,7 @@ If running on Windows it is suggested that you use the Windows Powershell runnin
 uv sync
 
 # Mac & Linux
-source .venv/bin/activatez
+source .venv/bin/activate
 
 # Windows Powershell
 .venv\Scripts\activate
@@ -83,7 +89,7 @@ source .venv/bin/activatez
 
 ### Serving the Granite AI Models
 
-[Lab 1: Document Summarization with Granite](../lab-1/readme.md), [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](../lab-2/readme.md) and [Lab 4: Generating Bash Code with Granite Code](../lab-4/readme.md) require Granite models to be served by an AI model runtime so that the models can be invoked or called. There are 2 options to serve the models as follows:
+[Lab 1: Document Summarization with Granite](../lab-1/readme.md) and [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](../lab-2/readme.md) require Granite models to be served by an AI model runtime so that the models can be invoked or called. There are 2 options to serve the models as follows:
 
 - [Replicate AI Cloud Platform](#replicate-ai-cloud-platform)
 - [Running Ollama Locally](#running-ollama-locally) OR
@@ -139,11 +145,4 @@ Running Ollama locally on your computer requires the following steps:
     ```shell
     ollama pull granite3.2:2b
     ollama pull granite3.2:8b
-    ```
-
-    For [Lab 4: Generating Bash Code with Granite Code](../lab-4/readme.md), you will also need at least one of the following Granite Code models.
-
-    ```shell
-    ollama pull granite-code:3b
-    ollama pull granite-code:8b
     ```

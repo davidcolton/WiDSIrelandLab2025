@@ -1,13 +1,12 @@
 # Project information
 site_name: Sample Women in Data Science Page
-site_url: https://davidcolton.github.io/sample-wids/
+site_url: https://github.com/WiDSIreland/WiDSIrelandLab2025
 site_author: David Colton
 site_description: Sample Women in Data Science Page.
 
 # Repository
-repo_name: DavidColton/sample_wids
-repo_url: https://github.com/davidcolton/sample-wids
-
+repo_name: WiDSIreland/WiDSIrelandLab2025
+repo_url: https://github.com/WiDSIreland/WiDSIrelandLab2025
 # Source Docs & Site Docs
 docs_dir: "docs"
 site_dir: "site"
@@ -21,7 +20,6 @@ nav:
       - Lab 1. Summarize a text document with Granite: lab-1/readme.md
       - Lab 2. Retrieval Augmented Generation (RAG) with Langchain: lab-2/readme.md
       - Lab 3. Energy Demand Forecasting with Granite Timeseries (TTM): lab-3/readme.md
-      - Lab 4. Generating Bash Code with Granite Code: lab-4/readme.md
   - References:
       - IBM Granite Community: https://github.com/ibm-granite-community
 

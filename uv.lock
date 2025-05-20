@@ -844,7 +844,7 @@ wheels = [
 
 [[package]]
 name = "granite-tsfm"
-version = "0.2.22"
+version = "0.2.23"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "datasets" },
@@ -856,9 +856,9 @@ dependencies = [
     { name = "transformers", version = "4.50.3", source = { registry = "https://pypi.org/simple" }, extra = ["torch"], marker = "platform_machine != 'x86_64' or sys_platform != 'darwin'" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a4/f2/c730d37712b257c93876c168e911bfdae92e858e1e05042d24ac2ce26cb5/granite_tsfm-0.2.22.tar.gz", hash = "sha256:aea70561e8095f03e211800d05d5f90250148fb85ca06510bca7a00548dda650", size = 12909920 }
+sdist = { url = "https://files.pythonhosted.org/packages/88/36/3d449bd3e5f207000e2f4f9343550e8036dc774ead510ad99b2fa0258061/granite_tsfm-0.2.23.tar.gz", hash = "sha256:43bbf5b7c55b7dc7191bd4768c2b8347f4b98898689af4b0f36bbb1d7721b9e9", size = 12909125 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/15/10/183b2b385809bfdc8a810c0fb0918b863ed96d527143acbb9b63f0fe3839/granite_tsfm-0.2.22-py3-none-any.whl", hash = "sha256:8eee124758b404b6960860c4218d63be77f9aab20c18285858cec935f45ccd37", size = 2341354 },
+    { url = "https://files.pythonhosted.org/packages/c3/c3/d347f75ba9307a8a5b4a63728032e640df44314a84f4119d749794b56afd/granite_tsfm-0.2.23-py3-none-any.whl", hash = "sha256:c9caf707efdb716be494c3147acf58dcde05eb1c3bdac8c4f1df74490a5096e5", size = 2341482 },
 ]
 
 [package.optional-dependencies]
@@ -3374,7 +3374,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "docling", specifier = ">=2.28.4" },
-    { name = "granite-tsfm", extras = ["notebooks"], specifier = "==0.2.22" },
+    { name = "granite-tsfm", extras = ["notebooks"], specifier = "==0.2.23" },
     { name = "ibm-granite-community-utils", git = "https://github.com/ibm-granite-community/utils" },
     { name = "ipywidgets", specifier = ">=8.1.5" },
     { name = "jupyter-black", specifier = ">=0.4.0" },

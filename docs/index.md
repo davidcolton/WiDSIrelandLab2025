@@ -1,8 +1,8 @@
 
 ---
-title: Granite Workshop
-description: Learn how to leverage the Granite Foundational Models
-logo: images/ibm-blue-background.png
+title: Granite Workshop  
+description: Learn how to leverage the Granite Foundational Models  
+logo: images/ibm-blue-background.png  
 ---
 
 # Introduction
@@ -36,7 +36,6 @@ The introductory page of the workshop is broken down into the following sections
 | [Lab 1: Document Summarization with Granite](lab-1/readme.md) | Learn how to use an AI model to summarize a work of literature |
 | [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](lab-2/readme.md) | Learn how to generate specific information from a large document |
 | [Lab 3: Energy Demand Forecasting with Granite Timeseries (TTM)](lab-3/readme.md) | Learn how to predict future trends using time series forecasting |
-| [Lab 4: Generating Bash Code with Granite Code](lab-4/readme.md) | Learn how to use an AI model to generate programming code    |
 
 ## Technology Used
 
