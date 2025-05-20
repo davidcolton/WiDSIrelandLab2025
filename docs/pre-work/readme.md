@@ -1,3 +1,8 @@
+---
+title: Granite Workshop Pre-work
+description: Preparation for the Granite Workshop
+logo: images/ibm-blue-background.png
+---
 
 - [Pre-work](#pre-work)
   - [Running the Granite Notebooks](#running-the-granite-notebooks)

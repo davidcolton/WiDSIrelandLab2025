@@ -1,3 +1,9 @@
+---
+title: Granite Workshop Lab 2
+description: Retrieval Augmented Generation (RAG) with Langchain
+logo: images/ibm-blue-background.png
+---
+
 # Retrieval Augmented Generation (RAG) with Langchain
 
 [Retrieval Augumented Generation (RAG)](https://research.ibm.com/blog/retrieval-augmented-generation-RAG) is an architectural pattern that can be used to augment the performance of language models by recalling factual information from a knowledge base, and adding that information to the model query.

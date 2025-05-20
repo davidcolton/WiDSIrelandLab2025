@@ -1,3 +1,9 @@
+---
+title: Granite Workshop Lab 1
+description: Document Summarization with Granite
+logo: images/ibm-blue-background.png
+---
+
 # Document Summarization with Granite
 
 [Text summarization](https://www.ibm.com/topics/text-summarization) condenses one or more texts into shorter summaries for enhanced information extraction.

@@ -1,4 +1,3 @@
-
 ---
 title: Granite Workshop  
 description: Learn how to leverage the Granite Foundational Models  
@@ -23,8 +22,6 @@ By the end of this workshop, you will be able to:
 The introductory page of the workshop is broken down into the following sections:
 
 
-- [logo: images/ibm-blue-background.png](#logo-imagesibm-blue-backgroundpng)
-  - [About this workshop](#about-this-workshop)
 - [Agenda](#agenda)
 - [Technology Used](#technology-used)
 - [Credits](#credits)
