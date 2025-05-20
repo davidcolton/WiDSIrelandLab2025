@@ -1,12 +1,12 @@
 # Project information
 site_name: Sample Women in Data Science Page
-site_url: https://widsireland.github.io/WiDSIrelandLab2025/
+site_url: https://davidcolton.github.io/sample-wids/
 site_author: David Colton
 site_description: Sample Women in Data Science Page.
 
 # Repository
 repo_name: DavidColton/sample_wids
-repo_url: https://github.com/WiDSIreland/WiDSIrelandLab2025
+repo_url: https://github.com/davidcolton/sample-wids
 
 # Source Docs & Site Docs
 docs_dir: "docs"
@@ -65,6 +65,8 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
+
+## DO NOT CHANGE BELOW THIS LINE
 
 # Copyright
 copyright: Copyright &copy; 2024- IBM Research
