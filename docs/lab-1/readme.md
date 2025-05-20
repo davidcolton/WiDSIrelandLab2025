@@ -1,5 +1,5 @@
 ---
-title: Granite Workshop Lab 1
+title: Women in Data Science Workshop Lab 1
 description: Document Summarization with Granite
 logo: images/ibm-blue-background.png
 ---

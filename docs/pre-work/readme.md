@@ -1,8 +1,13 @@
 ---
-title: Granite Workshop Pre-work
-description: Preparation for the Granite Workshop
+title: Women in Data Science Workshop Pre-work
+description: Preparation for the Women in Data Science Workshop
 logo: images/ibm-blue-background.png
 ---
+
+
+# Pre-work
+
+The labs in this workshop are [Jupyter notebooks](https://jupyter.org/). The notebooks can be run on your computer or remotely on the [Google Colab](https://colab.research.google.com) service. Check out [Running the Granite Notebooks](#running-the-granite-notebooks) section on how to setup the way you want to run the notebooks.
 
 - [Pre-work](#pre-work)
   - [Running the Granite Notebooks](#running-the-granite-notebooks)
@@ -20,10 +25,6 @@ logo: images/ibm-blue-background.png
     - [Serving the Granite AI Models for Colab](#serving-the-granite-ai-models-for-colab)
       - [Replicate AI Cloud Platform for Colab](#replicate-ai-cloud-platform-for-colab)
 
-
-# Pre-work
-
-The labs in this workshop are [Jupyter notebooks](https://jupyter.org/). The notebooks can be run on your computer or remotely on the [Google Colab](https://colab.research.google.com) service. Check out [Running the Granite Notebooks](#running-the-granite-notebooks) section on how to setup the way you want to run the notebooks.
 
 ## Running the Granite Notebooks
 
@@ -176,7 +177,7 @@ Running the lab notebooks remotely using [Google Colab](https://colab.research.g
 
 ### Serving the Granite AI Models for Colab
 
-[Lab 1: Document Summarization with Granite](../lab-1/README.md) and [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](../lab-2/README.md) and  require Granite models to be served by an AI model runtime so that the models can be invoked or called.
+[Lab 1: Document Summarization with Granite](../lab-1/readme.md) and [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](../lab-2/readme.md) and  require Granite models to be served by an AI model runtime so that the models can be invoked or called.
 
 #### Replicate AI Cloud Platform for Colab
 

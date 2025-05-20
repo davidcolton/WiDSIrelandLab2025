@@ -1,5 +1,5 @@
 ---
-title: Granite Workshop Lab 3
+title: Women in Data Science Workshop Lab 3
 description: Energy Demand Forecasting with Granite Timeseries (TTM)
 logo: images/ibm-blue-background.png
 ---

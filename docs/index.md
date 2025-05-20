@@ -1,5 +1,5 @@
 ---
-title: Granite Workshop  
+title: Women in Data Science Workshop  
 description: Learn how to leverage the Granite Foundational Models  
 logo: images/ibm-blue-background.png  
 ---
