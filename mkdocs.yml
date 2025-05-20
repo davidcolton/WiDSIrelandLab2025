@@ -9,12 +9,12 @@ repo_name: WiDSIreland/WiDSIrelandLab2025
 repo_url: https://github.com/WiDSIreland/WiDSIrelandLab2025
 # Source Docs & Site Docs
 docs_dir: "docs"
-site_dir: "site"
+##site_dir: "site"
 
 # Navigation
 nav:
   - Welcome:
-      - About the workshop: README.md
+      - About the workshop: index.md
   - Workshop:
       - Lab 0. Pre-work: pre-work/readme.md
       - Lab 1. Summarize a text document with Granite: lab-1/readme.md
