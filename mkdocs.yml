@@ -1,8 +1,8 @@
 # Project information
-site_name: Sample Women in Data Science Page
-site_url: https://github.com/WiDSIreland/WiDSIrelandLab2025
+site_name: Women in Data Science Page
+site_url: https://widsireland.github.io/WiDSIrelandLab2025/
 site_author: David Colton
-site_description: Sample Women in Data Science Page.
+site_description: Women in Data Science Page.
 
 # Repository
 repo_name: WiDSIreland/WiDSIrelandLab2025
@@ -14,7 +14,7 @@ site_dir: "site"
 # navigation
 nav:
   - Welcome:
-      - About the workshop: index.md
+      - About the workshop: README.md
   - Workshop:
       - Lab 0. Pre-work: pre-work/readme.md
       - Lab 1. Summarize a text document with Granite: lab-1/readme.md
@@ -22,6 +22,11 @@ nav:
       - Lab 3. Energy Demand Forecasting with Granite Timeseries (TTM): lab-3/readme.md
   - References:
       - IBM Granite Community: https://github.com/ibm-granite-community
+
+## DO NOT CHANGE BELOW THIS LINE
+
+# Copyright
+copyright: Copyright &copy; 2024- IBM Research
 
 # Extensions
 markdown_extensions:

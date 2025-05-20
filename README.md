@@ -17,17 +17,17 @@ By the end of this workshop, you will be able to:
 * Generate specific information from a large document using the [RAG](https://research.ibm.com/blog/retrieval-augmented-generation-RAG) technique
 * Predict future trends using [time series forecasting](https://research.ibm.com/blog/AI-time-series-forecasting)
 
-### About this workshop
+# About this workshop
 
 The introductory page of the workshop is broken down into the following sections:
 
 - [Introduction](#introduction)
-    - [About this workshop](#about-this-workshop)
-  - [Agenda](#agenda)
-  - [Technology Used](#technology-used)
-  - [Credits](#credits)
+- [About this workshop](#about-this-workshop)
+- [Agenda](#agenda)
+- [Technology Used](#technology-used)
+- [Credits](#credits)
 
-## Agenda
+# Agenda
 
 | Link to Content                                              | Description                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -36,7 +36,7 @@ The introductory page of the workshop is broken down into the following sections
 | [Lab 2: Retrieval Augmented Generation (RAG) with Langchain](lab-2/readme.md) | Learn how to generate specific information from a large document |
 | [Lab 3: Energy Demand Forecasting with Granite Timeseries (TTM)](lab-3/readme.md) | Learn how to predict future trends using time series forecasting |
 
-## Technology Used
+# Technology Used
 
 The technology used in the workshop is as follows:
 
@@ -46,7 +46,7 @@ The technology used in the workshop is as follows:
 * [Ollama](https://ollama.com)
 * [Replicate](https://replicate.com/)
 
-## Credits
+# Credits
 
 The original authors and creators of this content were:
 
