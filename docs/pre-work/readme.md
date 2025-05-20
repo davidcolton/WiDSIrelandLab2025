@@ -79,7 +79,7 @@ uv 0.6.12 (e4e03833f 2025-04-02)
 Clone the workshop repo and cd into the repo directory.
 
 ```shell
-git clone https://github.com/davidcolton/sample-wids.git
+git clone https://github.com/WiDSIreland/WiDSIrelandLab2025
 cd sample-wids
 ```
 
