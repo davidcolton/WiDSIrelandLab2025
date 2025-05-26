@@ -38,7 +38,7 @@ To run the notebook from your command line in Jupyter using the active virtual e
 jupyter-lab
 ```
 
-When Jupyter Lab opens the path to the `notebooks/RAG_with_Langchain.ipynb` notebook file is relative to the `sample-wids` folder from the git clone in the [pre-work](../pre-work/readme.md). The folder navigation pane on the left-hand side can be used to navigate to the file. Once the notebook has been found it can be double clicked and it will open to the pane on the right. 
+When Jupyter Lab opens the path to the `notebooks/RAG_with_Langchain.ipynb` notebook file is relative to the `WiDSIrelandLab2025` folder from the git clone in the [pre-work](../pre-work/readme.md). The folder navigation pane on the left-hand side can be used to navigate to the file. Once the notebook has been found it can be double clicked and it will open to the pane on the right. 
 
 
 ## Running and Lab (with explanations)

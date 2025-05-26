@@ -81,7 +81,7 @@ Clone the workshop repo and cd into the repo directory.
 
 ```shell
 git clone https://github.com/WiDSIreland/WiDSIrelandLab2025
-cd sample-wids
+cd WiDSIrelandLab2025
 ```
 
 ### Sync the Python Virtual Environment
